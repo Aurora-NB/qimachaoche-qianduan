@@ -1,0 +1,22 @@
+$light-gray: #ebedf0;
+$font-color: #3145a6;
+
+.bread-crumb-container {
+  height: 24px;
+
+  padding: 0px 12px;
+  margin-bottom: 12px;
+
+  font-size: 12px;
+  color: $font-color;
+
+  background-color: $light-gray;
+
+  .bread-break {
+    padding: 12px 0px;
+  }
+
+  .bread-link {
+    cursor: pointer;
+  }
+}
