@@ -15,6 +15,90 @@
     border-radius: 0 0 24px 0;
     background-color: #4859d1;
 
+    .menu-icon {
+      margin-left: 1vw;
+      height: $top-height;
+      line-height: $top-height;
+
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+          -ms-transform: rotate(0deg); /* IE 9 */
+          -moz-transform: rotate(0deg); /* Firefox */
+          -o-transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(90deg);
+          -ms-transform: rotate(90deg); /* IE 9 */
+          -moz-transform: rotate(90deg); /* Firefox */
+          -o-transform: rotate(90deg);
+        }
+      }
+
+      @-webkit-keyframes rotate {
+        0% {
+          -moz-transform: rotate(0deg);
+        }
+        100% {
+          -moz-transform: rotate(90deg);
+        }
+      }
+
+      .show-animation {
+        animation: rotate 0.5s 1;
+        animation-fill-mode: forwards;
+        -webkit-animation: rotate 0.5s 1; /*Safari and Chrome*/
+        -webkit-animation-fill-mode: forwards;
+      }
+
+      @keyframes un-rotate {
+        0% {
+          transform: rotate(90deg);
+          -ms-transform: rotate(90deg); /* IE 9 */
+          -moz-transform: rotate(90deg); /* Firefox */
+          -o-transform: rotate(90deg);
+        }
+        100% {
+          transform: rotate(0deg);
+          -ms-transform: rotate(0deg); /* IE 9 */
+          -moz-transform: rotate(0deg); /* Firefox */
+          -o-transform: rotate(0deg);
+        }
+      }
+
+      @-webkit-keyframes un-rotate {
+        0% {
+          -moz-transform: rotate(90deg);
+        }
+        100% {
+          -moz-transform: rotate(0deg);
+        }
+      }
+
+      .show-animation {
+        animation: rotate 0.8s 1;
+        animation-fill-mode: forwards;
+        -webkit-animation: rotate 0.5s 1; /*Safari and Chrome*/
+        -webkit-animation-fill-mode: forwards;
+      }
+
+      .un-show-animation {
+        animation: un-rotate 0.8s 1;
+        animation-fill-mode: forwards;
+        -webkit-animation: un-rotate 0.5s 1; /*Safari and Chrome*/
+        -webkit-animation-fill-mode: forwards;
+      }
+
+
+      > svg {
+        line-height: $top-height;
+        width: $top-height / 1.5;
+        height: $top-height / 1.5;
+        cursor: pointer;
+      }
+
+    }
+
     .home-btn {
       padding: 0 48px;
       font-size: 28px;
@@ -22,6 +106,12 @@
       line-height: $top-height;
       text-align: center;
       cursor: pointer;
+
+      /*文字不可选择*/
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
     }
 
     .middle-router-btns {

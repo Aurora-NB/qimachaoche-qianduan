@@ -3,8 +3,8 @@
     <!--<div v-if="device==='mobile' && sidebar.opened" class="drawer-bg" @click="handleClickOutside"/>-->
     <!--<sidebar class="sidebar-container"/>-->
     <div class>
-      <navbar/>
-      <app-main/>
+      <navbar @show-menu="handleShowMenu"/>
+      <app-main :show-menu="showMenu"/>
     </div>
   </div>
 </template>
@@ -39,6 +39,11 @@ export default {
     AppMain
   },
   mixins: [ResizeMixin],
+  data() {
+    return {
+      showMenu: false
+    }
+  },
   computed: {
     sidebar() {
       return this.$store.state.app.sidebar
@@ -58,6 +63,9 @@ export default {
   methods: {
     handleClickOutside() {
       this.$store.dispatch('CloseSideBar', { withoutAnimation: false })
+    },
+    handleShowMenu(value) {
+      this.showMenu = value
     }
   }
 }

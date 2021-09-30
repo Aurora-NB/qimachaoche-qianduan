@@ -143,14 +143,17 @@ export default {
           }
           console.log(data)
           submitAssignment(data).then((res) => {
-            console.log(res)
+            if (res.code === 0) {
+              this.$message({ message: '上传成功', type: 'success' })
+              this.$router.push('/running')
+            } else {
+              this.$message({ message: '上传失败', type: 'error' })
+            }
           }, (err) => {
             console.log(err)
           }).finally(() => {
             this.submitLoading = false
           })
-
-          // this.$router.push('/running')
         } else {
           console.log('error submit!!')
           return false

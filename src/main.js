@@ -32,7 +32,6 @@ import store from './store'
 import router from './router'
 import '@/icons' // icon
 import '@/iconfont/iconfont.css' // iconfont
-import './App.css'
 import installDirective from '@/directives'
 
 window.Vue = Vue

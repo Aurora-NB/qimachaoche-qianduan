@@ -112,7 +112,6 @@ export default {
         if (valid) {
           this.submitLoading = true
           const { form } = this
-          console.log(form)
           const formData = new FormData()
           formData.append('train_algorithm_name', form.train_name)
           formData.append('config_type', 1)
@@ -120,14 +119,17 @@ export default {
           formData.append('dsl_file', form.dsl_file[0])
 
           submitAssignmentByFile(formData).then((res) => {
-            console.log(res)
+            if (res.code === 0) {
+              this.$message({ message: '上传成功', type: 'success' })
+              this.$router.push('/running')
+            } else {
+              this.$message({ message: '上传失败', type: 'error' })
+            }
           }, (err) => {
             console.log(err)
           }).finally(() => {
             this.submitLoading = false
           })
-
-          // this.$router.push('/running')
         } else {
           console.log('error submit!!')
           return false

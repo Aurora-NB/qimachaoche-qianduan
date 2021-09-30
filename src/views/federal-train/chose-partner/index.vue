@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-form ref="form" :inline="true" :model="form">
+    <el-form ref="form" :inline="true" :model="form" style="width: 100%">
       <!-- 单行数据 -->
       <el-row v-for="(item, index) in form.items" :key="index" type="flex" justify="space-around">
         <el-form-item
@@ -29,15 +29,13 @@
         </el-form-item>
       </el-row>
       <el-row type="flex" justify="center">
-        <el-form-item>
-          <el-button
-            type="primary"
-            style="width: 83vw"
-            @click="addPartner"
-          >新增参与方
-          </el-button
-          >
-        </el-form-item>
+        <el-button
+          type="primary"
+          style="width: 96%"
+          @click="addPartner"
+        >新增参与方
+        </el-button
+        >
       </el-row>
 
     </el-form>

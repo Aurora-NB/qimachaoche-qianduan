@@ -31,7 +31,6 @@ import store from '../store'
 console.log(window.location.origin)
 const service = axios.create({
   // baseURL: window.location.origin,
-  // baseURL: "http://10.20.5.33:8080",
   baseURL: 'http://localhost:8080',
   withCredentials: false,
   timeout: 20000 // request timeout

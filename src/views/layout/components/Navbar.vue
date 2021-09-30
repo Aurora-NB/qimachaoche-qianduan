@@ -1,19 +1,34 @@
 <template>
   <div class="nav-container flex">
     <div class="navbar flex flex-center">
+      <div class="menu-icon flex flex-center">
+        <svg
+          :class="{'icon':true,'show-animation':showMenu,'un-show-animation':!showMenu}"
+          t="1632974746733"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="5222"
+          width="200"
+          height="200"
+          @click="handleShowMenu">
+          <path
+            d="M170.666667 213.333333h682.666666v85.333334H170.666667V213.333333z m0 512h682.666666v85.333334H170.666667v-85.333334z m0-256h682.666666v85.333334H170.666667v-85.333334z"
+            fill="#dbdbdb"
+            p-id="5223"/>
+        </svg>
+
+      </div>
       <div>
         <div class="home-btn c-fff" @click="go('/')">
           <b>FATE</b>Board
         </div>
       </div>
-      <div class="middle-router-btns">
-        <span class="router-btns" to="/federaltrain">联邦训练</span>
-      </div>
       <div class="router-btns flex flex-center">
-        <!-- <span v-if="!!username" :class="{'active':path === '/running'}" @click="go('/running')">RUNNING</span>
-        <span v-if="!!username" :class="{'active':path === '/history'}" @click="go('/history')">JOBS</span>
-        <userinfo v-if="!!username" />
-        <span v-if="!username" :class="{'active':path === '/login'}" @click="go('/login')">SIGNIN</span> -->
+        <!--        <span v-if="!!username" :class="{'active':path === '/running'}" @click="go('/running')">RUNNING</span>-->
+        <!--        <span v-if="!!username" :class="{'active':path === '/history'}" @click="go('/history')">JOBS</span>-->
+        <!--        <userinfo v-if="!!username" />-->
+        <!--        <span v-if="!username" :class="{'active':path === '/login'}" @click="go('/login')">SIGNIN</span>-->
       </div>
     </div>
 
@@ -78,7 +93,8 @@ export default {
       projectsData: null,
       isSimulate: true,
       path: this.$route.path,
-      showConfigModal: false
+      showConfigModal: false,
+      showMenu: false
     }
   },
   computed: {
@@ -136,6 +152,10 @@ export default {
     save() {
       this.$message('save successfully')
       this.showConfigModal = false
+    },
+    handleShowMenu() {
+      this.showMenu = !this.showMenu
+      this.$emit('show-menu', this.showMenu)
     }
   }
 }
