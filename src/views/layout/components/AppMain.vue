@@ -10,13 +10,35 @@
           <i class="el-icon-orange"/>
           <span slot="title">联邦训练</span>
         </el-menu-item>
-        <el-menu-item index="/running">
-          <i class="el-icon-cpu"/>
-          <span slot="title">RUNNING</span>
-        </el-menu-item>
+        <el-submenu index="/dataCenter">
+          <template slot="title">
+            <i class="el-icon-s-data"/>
+            <span slot="title">数据中心</span>
+          </template>
+          <el-menu-item-group>
+            <el-menu-item index="/dataCenter/management">数据源管理</el-menu-item>
+            <el-menu-item index="/dataCenter/preprocess">预处理数据集</el-menu-item>
+          </el-menu-item-group>
+        </el-submenu>
+        <el-submenu index="/inference">
+          <template slot="title">
+            <i class="el-icon-aim"/>
+            <span slot="title">在线推理</span>
+          </template>
+          <el-menu-item-group>
+            <el-menu-item index="/inference/deploy">模型部署</el-menu-item>
+            <el-menu-item index="/inference/single">单例预测</el-menu-item>
+            <el-menu-item index="/inference/batch">批量预测</el-menu-item>
+          </el-menu-item-group>
+
+        </el-submenu>
+        <!--        <el-menu-item index="/running">-->
+        <!--          <i class="el-icon-cpu"/>-->
+        <!--          <span slot="title">RUNNING</span>-->
+        <!--        </el-menu-item>-->
         <el-menu-item index="/history">
           <i class="el-icon-link"/>
-          <span slot="title">JOBS</span>
+          <span slot="title">训练记录</span>
         </el-menu-item>
       </el-menu>
     </div>

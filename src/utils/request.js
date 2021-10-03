@@ -28,7 +28,7 @@ import store from '../store'
 
 // axios.defaults.headers.common['Authorization'] = getToken()
 // create an axios instance
-console.log(window.location.origin)
+// console.log(window.location.origin)
 const service = axios.create({
   // baseURL: window.location.origin,
   baseURL: 'http://localhost:8080',
@@ -105,6 +105,14 @@ service.interceptors.response.use(
           name: 'login'
         })
         return Promise.reject('error')
+      } else if (res.code === 10000 && res.data.retcode === 101) {
+        // 当没有数据源时
+        Message({
+          message: '暂无数据源',
+          type: 'warning',
+          duration: 3 * 1000
+        })
+        return Promise.reject('warning')
       } else {
         Message({
           message: res.message || res.msg || res.retmsg,

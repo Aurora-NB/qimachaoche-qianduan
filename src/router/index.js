@@ -64,7 +64,23 @@ export const constantRouterMap = [
           },
           {
             path: '/federalTrain/choseParams-advance',
-            component: () => import('@/views/federal-train/chose-params-advance')
+            component: () =>
+              import('@/views/federal-train/chose-params-advance')
+          }
+        ]
+      },
+      {
+        path: '/dataCenter',
+        redirect: '/dataCenter/management',
+        component: () => import('@/views/data-center'),
+        children: [
+          {
+            path: '/dataCenter/management',
+            component: () => import('@/views/data-center/management')
+          },
+          {
+            path: '/dataCenter/preprocess',
+            component: () => import('@/views/data-center/preprocess')
           }
         ]
       },

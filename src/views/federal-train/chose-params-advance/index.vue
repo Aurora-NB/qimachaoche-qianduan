@@ -24,7 +24,7 @@
             <el-button
               size="small"
               type="primary"
-              @click="downloadTempalte('/fate/examples/dsl/v1/homo_logistic_regression',
+              @click="downloadTemplate('/fate/examples/dsl/v1/homo_logistic_regression',
                                        'test_homolr_train_job_conf.json')">
               下载模版
             </el-button>
@@ -42,7 +42,7 @@
             <el-button
               size="small"
               type="primary"
-              @click="downloadTempalte('/fate/examples/dsl/v1/homo_logistic_regression',
+              @click="downloadTemplate('/fate/examples/dsl/v1/homo_logistic_regression',
                                        'test_homolr_train_job_dsl.json')">
               下载模版
             </el-button>
@@ -64,8 +64,8 @@
 
 <script>
 import { mapState } from 'vuex'
-import { downloadTempalte, submitAssignmentByFile } from '../../../api/federalTrain'
-
+import { submitAssignmentByFile } from '@/api/federalTrain'
+import { downloadTemplate } from '@/api/common.js'
 export default {
   data() {
     return {
@@ -90,7 +90,7 @@ export default {
     }
   },
   methods: {
-    downloadTempalte,
+    downloadTemplate: downloadTemplate,
     toLast() {
       this.$router.push('/federalTrain/chosePartner')
     },
@@ -121,7 +121,7 @@ export default {
           submitAssignmentByFile(formData).then((res) => {
             if (res.code === 0) {
               this.$message({ message: '上传成功', type: 'success' })
-              this.$router.push('/running')
+              this.$router.push('/history')
             } else {
               this.$message({ message: '上传失败', type: 'error' })
             }
