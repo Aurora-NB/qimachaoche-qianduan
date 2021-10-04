@@ -5,8 +5,10 @@
     :show-close="false"
     :close-on-click-modal="false"
     :close-on-press-escape="false"
-    title="上传数据集"
-    destroy-on-close>
+    :destroy-on-close="true">
+    <template slot="title">
+      <h1 class="dialog-title">上传数据集</h1>
+    </template>
     <el-form
       ref="form"
       :rules="rules"
@@ -14,7 +16,6 @@
       label-position="left"
       size="small"
     >
-
       <el-form-item prop="config_file" label="数据集选取:">
         <el-upload
           :limit="1"

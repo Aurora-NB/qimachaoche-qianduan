@@ -85,6 +85,25 @@ export const constantRouterMap = [
         ]
       },
       {
+        path: 'inference',
+        redirect: '/inference/deploy',
+        component: () => import('@/views/inference'),
+        children: [
+          {
+            path: '/inference/deploy',
+            component: () => import('@/views/inference/deploy')
+          },
+          {
+            path: '/inference/single',
+            component: () => import('@/views/inference/single')
+          },
+          {
+            path: '/inference/batch',
+            component: () => import('@/views/inference/batch')
+          }
+        ]
+      },
+      {
         path: '/running',
         name: 'RUNNINNG',
         component: () => import('@/views/job-running')

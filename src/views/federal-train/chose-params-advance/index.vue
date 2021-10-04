@@ -103,7 +103,6 @@ export default {
       return false
     },
     handleFinish() {
-      console.log(this.form)
       if (this.form.config_file.length === 0 || this.form.dsl_file.length === 0) {
         this.$message({ message: '请选择config文件和dsl文件', type: 'warning' })
         return

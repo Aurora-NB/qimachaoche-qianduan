@@ -12,3 +12,10 @@
   justify-self: center;
   align-self: center;
 }
+
+.dialog-title {
+  margin-top: 3vh;
+  background-image: -webkit-linear-gradient(top, rgb(65,89,209), rgb(239,236,235));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

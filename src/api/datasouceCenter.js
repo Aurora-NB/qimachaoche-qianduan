@@ -31,3 +31,38 @@ export function uploadDatasource(data) {
     data
   })
 }
+
+export function getPreprocessingField(fullPath) {
+  return request({
+    url: '/v1/client/download/template',
+    method: 'post',
+    data: {
+      file_name: fullPath
+    }
+  })
+    .then(res => {
+      return Promise.resolve(
+        res.data
+          .split('\r\n')[0]
+          .split(',')
+          .map(item => ({
+            label: item,
+            description: '',
+            type: 0,
+            is_use: true,
+            content: ''
+          }))
+      )
+    })
+    .catch(err => {
+      return Promise.reject(err)
+    })
+}
+
+export function preprocess(data) {
+  return request({
+    url: '/v1/preprocess/data/preprocess',
+    method: 'post',
+    data
+  })
+}

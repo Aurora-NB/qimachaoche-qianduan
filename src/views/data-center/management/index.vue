@@ -1,7 +1,7 @@
 <template>
   <div class="content-container">
-    <h1 style="margin-bottom: 2vh">数据源管理</h1>
-    <el-button type="primary" style="margin-bottom: 2vh" @click="updateDatasourceShow = true">上传数据源</el-button>
+    <h1 class="dialog-title" style="margin-bottom: 3vh">数据源管理</h1>
+    <el-button type="primary" style="margin-bottom: 1vh" @click="uploadDatasourceDialogShow = true">上传数据源</el-button>
     <el-table :data="tableData" style="width: 98%" stripe border>
       <el-table-column label="job_id">
         <template slot-scope="scope">
@@ -30,7 +30,7 @@
       </el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
-          <el-link type="primary">预处理</el-link>
+          <el-link type="primary" @click="handlePreprocess(scope.row)">预处理</el-link>
           <span>/</span>
           <el-link type="primary" @click="downloadTemplateByFullPath(scope.row.file)">下载</el-link>
           <span>/</span>
@@ -40,23 +40,28 @@
       </el-table-column>
 
     </el-table>
-    <update-datasource :show="updateDatasourceShow" @close="handleDialogClose"/>
+    <upload-datasource-dialog :show="uploadDatasourceDialogShow" @close="handleUploadDialogClose"/>
+    <datasource-dialog :show="datasourceDialogShow" :basic-info="curInfo" :type="0" @after-submit="handleAfterSubmit" @close="handleDatasourceDialogClose"/>
   </div>
 </template>
 
 <script>
 import { delDatasource, getDatasourceManagementList } from '../../../api/datasouceCenter'
-import UpdateDatasource from '../components/updateDatasourceDialog'
 import { downloadTemplateByFullPath } from '../../../api/common'
+import UploadDatasourceDialog from '../components/updateDatasourceDialog'
+import DatasourceDialog from '../components/datasourceDialog'
 
 export default {
   components: {
-    'update-datasource': UpdateDatasource
+    'upload-datasource-dialog': UploadDatasourceDialog,
+    'datasource-dialog': DatasourceDialog
   },
   data() {
     return {
       tableData: [],
-      updateDatasourceShow: false
+      uploadDatasourceDialogShow: false,
+      datasourceDialogShow: false,
+      curInfo: {}
     }
   },
   mounted() {
@@ -92,9 +97,20 @@ export default {
         console.log(e)
       })
     },
-    handleDialogClose() {
-      this.updateDatasourceShow = false
+    handleUploadDialogClose() {
+      this.uploadDatasourceDialogShow = false
       this.getList()
+    },
+    handleDatasourceDialogClose() {
+      this.datasourceDialogShow = false
+      this.getList()
+    },
+    handlePreprocess(info) {
+      this.curInfo = info
+      this.datasourceDialogShow = true
+    },
+    handleAfterSubmit() {
+      this.$router.push('/dataCenter/preprocess')
     },
     downloadTemplateByFullPath
   }
