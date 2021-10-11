@@ -145,7 +145,7 @@ export default {
           submitAssignment(data).then((res) => {
             if (res.code === 0) {
               this.$message({ message: '上传成功', type: 'success' })
-              this.$router.push('/history')
+              this.$router.push('/running')
             } else {
               this.$message({ message: '上传失败', type: 'error' })
             }

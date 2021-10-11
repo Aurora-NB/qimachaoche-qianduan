@@ -32,10 +32,10 @@
           </el-menu-item-group>
 
         </el-submenu>
-        <!--        <el-menu-item index="/running">-->
-        <!--          <i class="el-icon-cpu"/>-->
-        <!--          <span slot="title">RUNNING</span>-->
-        <!--        </el-menu-item>-->
+        <el-menu-item index="/running">
+          <i class="el-icon-cpu"/>
+          <span slot="title">正在训练</span>
+        </el-menu-item>
         <el-menu-item index="/history">
           <i class="el-icon-link"/>
           <span slot="title">训练记录</span>
