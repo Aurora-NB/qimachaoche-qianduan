@@ -1,23 +1,6 @@
-# fateboard-adm-web
+# 对fateboard进行二次开发
 
-## Build Setup
-
-# Install dependencies
-
-npm install
-
-# Serve with hot reload at localhost:8028
-
-npm run dev
-
-# Build for production with minification
-
-npm run build
-
-# Build for production and view the bundle analyzer report
-
-npm run build --report
-
-```
-
-```
+## 新增功能
+- 纵向联邦训练
+- 在线推理
+- 数据源管理
